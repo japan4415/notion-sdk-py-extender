@@ -1,0 +1,18 @@
+[project]
+name = "notion-sdk-py-extender"
+version = "0.1.0"
+description = "Add a short description here"
+authors = [{ name = "Yoshihiko", email = "raiden000discord@gmail.com" }]
+dependencies = ["pydantic~=2.6.0"]
+readme = "README.md"
+requires-python = ">= 3.11.0"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = ["ruff~=0.2.0", "pytest~=8.0.0", "notion-client~=2.2.1"]
+[tool.hatch.metadata]
+allow-direct-references = true
