@@ -20,7 +20,7 @@ from notion_sdk_py_extender.database import Database
 
 token = os.environ.get("NOTION_SDK_PY_EXTENDER_TOKEN")
 page_id = os.environ.get("NOTION_SDK_PY_EXTENDER_PAGE_ID")
-database_id = "d7cdeac02c2340819fa327d10984da65"
+database_id = "8537d5731ea340e89fb5e7ca780239f9"
 
 if __name__ == "__main__":
     c = Client(auth=token)
@@ -29,30 +29,22 @@ if __name__ == "__main__":
             "page_id": page_id,
         }
     )
+    page_update = Page(**r).to_update()
+    page_update.properties["title"].title[0].text.content = "notion-sdk-py-extend"
+    c.pages.update(**page_update.model_dump(exclude_none=True))
+    r = c.blocks.children.list(**{"block_id": page_id, "page_size": 50})
+    for block in r["results"]:
+        b = Block(**block)
+        if b.type == "paragraph" and len(b.paragraph.rich_text) != 0:
+            b.paragraph.rich_text[0].text.content = "notion-sdk-py-extend"
+            c.blocks.update(**b.to_update().model_dump(exclude_none=True))
+    r = c.databases.retrieve(
+        **{
+            "database_id": database_id,
+        }
+    )
     pprint(r)
-    page = Page(**r)
-    pprint(page)
-    # page.properties.title.title[0].text.content = "notion-sdk-py-extender"
-    # pprint(page.properties.model_dump(exclude_none=True))
-    # c.pages.update(
-    #     **{
-    #         "page_id": page.id,
-    #         "properties": page.properties.model_dump(exclude_none=True),
-    #     }
-    # )
-    # r = c.blocks.children.list(**{"block_id": page_id, "page_size": 50})
-    # pprint(r)
-    # for block in r["results"]:
-    #     # pprint(block)
-    #     a = Block(**block)
-    #     pprint(a)
-    # r = c.databases.retrieve(
-    #     **{
-    #         "database_id": database_id,
-    #     }
-    # )
-    # pprint(r)
-    # database = Database(**r)
+    database = Database(**r)
     # pprint(database)
     # r = c.databases.query(
     #     **{

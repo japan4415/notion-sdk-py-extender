@@ -65,3 +65,20 @@ class Page(BaseModel):
     url: Optional[str] = None
     public_url: Optional[str] = None
     request_id: Optional[str] = None
+
+    def to_update(self):
+        return PageUpdate(
+            page_id=self.id,
+            properties=self.properties,
+            archived=self.archived,
+            icon=self.icon,
+            cover=self.cover,
+        )
+
+
+class PageUpdate(BaseModel):
+    page_id: str
+    properties: Optional[dict[str, PageProperties]] = None
+    archived: Optional[bool] = None
+    icon: Optional[PageIcon] = None
+    cover: Optional[str] = None

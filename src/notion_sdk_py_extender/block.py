@@ -349,3 +349,86 @@ class Block(BaseModel):
     to_do: Optional[BlockToDo] = None
     toggle: Optional[BlockToggle] = None
     video: Optional[BlockVideo] = None
+
+    def to_update(self):
+        return BlockUpdate(
+            block_id=self.id,
+            parent=self.parent,
+            created_time=self.created_time,
+            created_by=self.created_by,
+            last_edited_time=self.last_edited_time,
+            last_edited_by=self.last_edited_by,
+            archived=self.archived,
+            has_children=self.has_children,
+            bookmark=self.bookmark,
+            breadcrumb=self.breadcrumb,
+            bulleted_list_item=self.bulleted_list_item,
+            callout=self.callout,
+            child_database=self.child_database,
+            child_page=self.child_page,
+            code=self.code,
+            column=self.column,
+            column_list=self.column_list,
+            divider=self.divider,
+            embed=self.embed,
+            equation=self.equation,
+            file=self.file,
+            heading_1=self.heading_1,
+            heading_2=self.heading_2,
+            heading_3=self.heading_3,
+            image=self.image,
+            link_preview=self.link_preview,
+            mention=self.mention,
+            numbered_list_item=self.numbered_list_item,
+            paragraph=self.paragraph,
+            pdf=self.pdf,
+            quote=self.quote,
+            synced_block=self.synced_block,
+            table=self.table,
+            table_of_contents=self.table_of_contents,
+            template=self.template,
+            to_do=self.to_do,
+            toggle=self.toggle,
+            video=self.video,
+        )
+
+
+class BlockUpdate(BaseModel):
+    block_id: str
+    parent: Optional[Parent] = None
+    created_time: Optional[str] = None
+    created_by: Optional[User] = None
+    last_edited_time: Optional[str] = None
+    last_edited_by: Optional[User] = None
+    archived: Optional[bool] = None
+    has_children: Optional[bool] = None
+    bookmark: Optional[BlockBookmark] = None
+    breadcrumb: Optional[BlockBreadcrumb] = None
+    bulleted_list_item: Optional[BlockBulletedListItem] = None
+    callout: Optional[BlockCallout] = None
+    child_database: Optional[BlockChildDatabase] = None
+    child_page: Optional[BlockChildPage] = None
+    code: Optional[BlockCode] = None
+    column: Optional[BlockColumn] = None
+    column_list: Optional[BlockColumnList] = None
+    divider: Optional[BlockDivider] = None
+    embed: Optional[BlockEmbed] = None
+    equation: Optional[BlockEquation] = None
+    file: Optional[BlockFile] = None
+    heading_1: Optional[BlockHeading] = None
+    heading_2: Optional[BlockHeading] = None
+    heading_3: Optional[BlockHeading] = None
+    image: Optional[BlockImage] = None
+    link_preview: Optional[BlockLinkPreview] = None
+    mention: Optional[BlockMention] = None
+    numbered_list_item: Optional[BlockNumberedListItem] = None
+    paragraph: Optional[BlockParagraph] = None
+    pdf: Optional[BlockPdf] = None
+    quote: Optional[BlockQuote] = None
+    synced_block: Optional[BlockSyncedBlock] = None
+    table: Optional[BlockTable] = None
+    table_of_contents: Optional[BlockTableOfContents] = None
+    template: Optional[BlockTemplate] = None
+    to_do: Optional[BlockToDo] = None
+    toggle: Optional[BlockToggle] = None
+    video: Optional[BlockVideo] = None
