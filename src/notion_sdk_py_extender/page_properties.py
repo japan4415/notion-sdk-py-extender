@@ -128,12 +128,6 @@ class PagePropertiesStatus(BaseModel):
     color: Color
 
 
-class PagePropertiesTitle(BaseModel):
-    id: str
-    type: PagePropertiesType
-    title: list[RichText]
-
-
 class PagePropertiesUniqueId(BaseModel):
     number: float
     prefix: Optional[str] = None
@@ -166,7 +160,7 @@ class PageProperties(BaseModel):
     rich_text: Optional[list[RichText]] = None
     select: Optional[PagePropertiesSelect] = None
     status: Optional[PagePropertiesStatus] = None
-    title: Optional[PagePropertiesTitle] = None
+    title: Optional[list[RichText]] = None
     url: Optional[str] = None
     unique_id: Optional[PagePropertiesUniqueId] = None
     verification: Optional[PagePropertiesVerification] = None

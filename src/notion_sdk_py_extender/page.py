@@ -4,6 +4,7 @@ from typing import Optional
 
 from notion_sdk_py_extender.rich_text import RichText
 from notion_sdk_py_extender.base import User, Parent
+from notion_sdk_py_extender.page_properties import PageProperties
 
 # https://developers.notion.com/reference/page
 
@@ -42,10 +43,6 @@ class PagePropertiesTitle(BaseModel):
     id: str
     type: PagePropertiesType
     title: list[RichText]
-
-
-class PageProperties(BaseModel):
-    title: Optional[PagePropertiesTitle] = None
 
 
 class PageIcon(BaseModel):

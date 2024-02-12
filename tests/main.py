@@ -24,14 +24,14 @@ database_id = "d7cdeac02c2340819fa327d10984da65"
 
 if __name__ == "__main__":
     c = Client(auth=token)
-    # r = c.pages.retrieve(
-    #     **{
-    #         "page_id": page_id,
-    #     }
-    # )
-    # pprint(r)
-    # page = Page(**r)
-    # pprint(page)
+    r = c.pages.retrieve(
+        **{
+            "page_id": page_id,
+        }
+    )
+    pprint(r)
+    page = Page(**r)
+    pprint(page)
     # page.properties.title.title[0].text.content = "notion-sdk-py-extender"
     # pprint(page.properties.model_dump(exclude_none=True))
     # c.pages.update(
@@ -54,13 +54,13 @@ if __name__ == "__main__":
     # pprint(r)
     # database = Database(**r)
     # pprint(database)
-    r = c.databases.query(
-        **{
-            "database_id": database_id,
-        }
-    )
-    # pprint(r)
-    for database in r["results"]:
-        pprint(database)
-        a = Page(**database)
-        pprint(a)
+    # r = c.databases.query(
+    #     **{
+    #         "database_id": database_id,
+    #     }
+    # )
+    # # pprint(r)
+    # for database in r["results"]:
+    #     pprint(database)
+    #     a = Page(**database)
+    #     pprint(a)
