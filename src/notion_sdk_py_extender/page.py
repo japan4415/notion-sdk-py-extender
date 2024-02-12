@@ -63,7 +63,7 @@ class Page(BaseModel):
     archived: Optional[bool] = None
     icon: Optional[PageIcon] = None
     cover: Optional[str] = None
-    properties: Optional[PageProperties] = None
+    properties: Optional[dict[str, PageProperties]] = None
     parent: Optional[Parent] = None
     url: Optional[str] = None
     public_url: Optional[str] = None
