@@ -146,6 +146,8 @@ class PagePropertiesVerification(BaseModel):
 
 
 class PageProperties(BaseModel):
+    id: Optional[str] = None
+    type: Optional[PagePropertiesType] = None
     checkbox: Optional[PagePropertiesCheckbox] = None
     created_by: Optional[User] = None
     created_time: Optional[str] = None
